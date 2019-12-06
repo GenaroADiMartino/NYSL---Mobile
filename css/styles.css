@@ -1,0 +1,198 @@
+
+body{
+	background-color: rgb(48,48,48);
+}
+
+.bg-nav{
+	background-image: linear-gradient(#99ff99, #006600);
+}
+
+.subtitles{
+	background: linear-gradient(-90deg,#000066,#6699ff, #000066);
+	height: 30px;
+}
+
+.subtitulos{
+	text-align: center;
+	color: white;
+	font-size: 24px;
+}
+
+.title{
+	font-style: italic; 
+	font-size: 30px;
+}
+
+.info{
+	margin: 30px;
+	color: white;
+	font-size: 20px;
+}
+
+.inf{
+	margin: 90px 0px 20px 0px;
+	padding: 10px 0px 35px 10px;
+}
+
+.informacion{
+	color: white;
+	font-size: 20px;
+	align-items:center;
+	justify-content:center;
+}
+
+.infocontact{
+	margin: 100px;
+	color: white;
+	text-align: center;
+}
+
+.colormail{
+	color:lightskyblue;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.contenedor{
+	background: grey;
+	background-repeat: no-repeat; 
+	background-size: cover; 
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+/* estilo de la tabla */
+main table{
+	border: 2px solid white;
+	border-collapse: collapse;
+}
+
+main tr{
+	border: 2px solid white;
+	font-family: sans-serif;
+	font-size: 1em;
+	color: white;
+	text-shadow: 2px 2px 4px #000000;
+}
+
+main td{
+	background-color: rgba(0,0,0,0.2);
+	border: 2px solid white;
+	padding: 3px;
+}
+
+main th{
+	border: 2px solid white;
+	background-color: rgba(0,0,0,0.8);
+	padding: 10px;
+}
+
+main thead{
+	font-weight: bold;
+}
+
+main table#t01 tr:nth-child(even) {
+	background-color: rgba(128,128,128,0.8);
+}
+
+main table#t01 tr:nth-child(odd) {
+	background-color: rgba(0,0,0,0.5);
+}
+
+.align{
+	vertical-align: middle;
+}
+
+h5{
+	color:white;
+	font-size: 25px;
+}
+
+.color_accordion{
+	background-color: rgb(48,48,48);
+}
+
+.card-header {
+	padding: .75rem 1.25rem;
+	margin-bottom: 0;
+	background-color: rgba(0,0,0,.5);
+	border-bottom: 2px solid rgba(255,255,255,.5);
+	border-top: 2px solid rgba(255,255,255,.5);
+}
+
+.navbar-custom {
+	background-color: #ff5500;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+	color: rgba(255,255,255,.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+	color: rgba(255,255,255,.5);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+	color: #ffffff;
+}
+
+.boxshadow {
+	filter: drop-shadow(15px 15px 15px black);
+}
+
+.button {
+	background: radial-gradient(#6699ff,#000066);
+	border: none;
+	color: white;
+	padding: 5px 20px 5px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	margin: 4px 4px;
+}
+
+.button4 {border-radius: 20px;}
+
+.borde{
+	font-family: sans-serif;
+	color: white;
+	padding: 5px;
+	border: 2px solid rgb(200, 200, 200);
+}
+
+.colorlink{
+	color: lightskyblue;
+	text-decoration: none;
+}
+
+.escudo{
+	padding: 5px 0px 0px 15px;
+}
+
+.coach{
+	padding: 10px 0px 10px 45px;
+}
+
+
+@media only screen and (orientation: Portrait) {
+	.mostrar-portrait{
+		display: block
+	}
+
+	.mostrar-landscape{
+		display: none;
+	}
+}
+
+@media only screen and (orientation: Landscape) {
+	.mostrar-portrait{
+		display: none
+	}
+
+	.mostrar-landscape{
+		display: block;
+	}
+}

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/styles.css">
+		<title>Home Page</title>
+		<!-- Disable tap highlight on IE -->
+		<meta name="msapplication-tap-highlight" content="no">
+
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="application-name" content="Firebase Database Quickstart">
+		<meta name="theme-color" content="#303F9F">
+
+		<!-- Add to homescreen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="apple-mobile-web-app-title" content="Firebase Database Quickstart">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+		<!-- Tile icon for Win8 -->
+		<meta name="msapplication-TileColor" content="#3372DF">
+		<meta name="msapplication-navbutton-color" content="#303F9F">
+		<!-- update the version number as needed -->
+		<script defer src="/__/firebase/6.2.4/firebase-app.js"></script>
+		<!-- include only the Firebase features as you need -->
+		<script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+		<script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+		<script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+		<script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+		<!-- initialize the SDK after all desired features are loaded -->
+		<script defer src="/__/firebase/init.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<header class="fixed-top">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-nav">
+					<a class="navbar-brand title" href="index.html">
+						<img src="images/nysl_logo.png" alt="Logo" style="width:70px">
+						<span>NYSL</span>
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<div class="navbar-nav float-right text-right pr-3">
+							<ul class="navbar-nav mr-auto">
+								<li class="nav-item active">
+									<a class="nav-link" data-toggle="collapse" data-toggle="collapse" data-target=".navbar-collapse.show" onclick="cambiarSeccion('UE')">UPCOMING EVENTS</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="collapse" data-toggle="collapse" data-target=".navbar-collapse.show" onclick="cambiarSeccion('GI')">GAME INFORMATION</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="collapse" data-toggle="collapse" data-target=".navbar-collapse.show" onclick="cambiarSeccion('TI')">TEAM INFORMATION</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="collapse" data-toggle="collapse" data-target=".navbar-collapse.show" onclick="cambiarSeccion('CT')">CONTACT</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" data-toggle="collapse" data-toggle="collapse" data-target=".navbar-collapse.show" onclick="cambiarSeccion('LC')">LOGIN - CHAT</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</header>
+			<div class="subtitles inf">
+				<h3 v-show="seccion == 'UE'" class="subtitulos">UPCOMING EVENTS</h3>
+				<h3 v-show="seccion == 'GI'" class="subtitulos">GAME INFORMATION</h3>
+				<h3 v-show="seccion == 'TI'" class="subtitulos">TEAM INFORMATION</h3>
+				<h3 v-show="seccion == 'U1'" class="subtitulos">TEAM DETAILS</h3>
+				<h3 v-show="seccion == 'U2'" class="subtitulos">TEAM DETAILS</h3>
+				<h3 v-show="seccion == 'U3'" class="subtitulos">TEAM DETAILS</h3>
+				<h3 v-show="seccion == 'U4'" class="subtitulos">TEAM DETAILS</h3>
+				<h3 v-show="seccion == 'U5'" class="subtitulos">TEAM DETAILS</h3>
+				<h3 v-show="seccion == 'U6'" class="subtitulos">TEAM DETAILS</h3>
+				<h3 v-show="seccion == 'CT'" class="subtitulos">CONTACT</h3>
+				<h3 v-show="seccion == 'LC'" class="subtitulos">LOGIN - CHAT</h3>
+			</div>
+			<main>
+				<div v-show="seccion == 'UE'" class="info">
+					<h3>August 4</h3>
+					<p>NYSL Fundraiser</p>
+					<br>
+					<h3>August 16</h3>
+					<p>Season Kick-off: Meet the Teams</p>
+					<br>
+					<h3>September 1</h3>
+					<p>First Game of the Season (Check Game Schedule for details)</p>
+				</div>  
+				<div v-show="seccion == 'GI'">
+					<div class="row">
+						<div class="col-12">   
+							<div id="accordion">
+								<div class="card color_accordion">
+									<div class="card-header">
+										<a class="card-link" data-toggle="collapse" href="#collapseOne">
+											<h5>September</h5>
+										</a>
+									</div>
+									<div id="collapseOne" class="collapse" data-parent="#accordion">
+										<div class="card-body color_accordion" id="tabla-partidos">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th>Match</th>
+														<th>Teams</th>
+														<th>Location</th>
+													</tr>
+												</thead>
+												<tbody>  
+													<tr v-for="partido in pSeptember">
+														<td>{{partido.day}}/{{partido.monthN}} {{partido.time}}</td>
+														<td>{{partido.team1}} vs {{partido.team2}}</td>
+														<td class="link mostrar-portrait">
+															<a class="colorlink" v-bind:href="partido.map" target="_blank">{{partido.location}}</a>
+														</td>
+														<td class="link mostrar-landscape">
+															<iframe :src="partido.iframe"></iframe>
+															<a class="colorlink">{{partido.location}}</a>
+														</td>
+													</tr>					
+												</tbody>  
+											</table>
+										</div>
+									</div>
+									<div class="card color_accordion">
+										<div class="card-header">
+											<a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+												<h5>October</h5>
+											</a>
+										</div>
+										<div id="collapseTwo" class="collapse" data-parent="#accordion">
+											<div class="card-body color_accordion" id="tabla-partidos">
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Match</th>
+															<th>Teams</th>
+															<th>Location</th>
+														</tr>
+													</thead>
+													<tbody>  
+														<tr v-for="partido in pOctober">
+															<td>{{partido.day}}/{{partido.monthN}} {{partido.time}}</td>
+															<td>{{partido.team1}} vs {{partido.team2}}</td>
+															<td class="link mostrar-portrait">
+																<a class="colorlink" v-bind:href="partido.map" target="_blank">{{partido.location}}</a>
+															</td>
+															<td class="link mostrar-landscape">
+																<iframe :src="partido.iframe"></iframe>
+																<a class="colorlink">{{partido.location}}</a>
+															</td>
+														</tr>					
+													</tbody>  
+												</table>
+											</div>
+										</div>
+									</div>
+									<div class="card color_accordion">
+										<div class="card-header">
+											<a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+												<h5>November</h5>
+											</a>
+										</div>
+										<div id="collapseThree" class="collapse" data-parent="#accordion">
+											<div class="card-body color_accordion" id="tabla-partidos">
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Match</th>
+															<th>Teams</th>
+															<th>Location</th>
+														</tr>
+													</thead>
+													<tbody>  
+														<tr v-for="partido in pNovember">
+															<td>{{partido.day}}/{{partido.monthN}} {{partido.time}}</td>
+															<td>{{partido.team1}} vs {{partido.team2}}</td>
+															<td class="link mostrar-portrait">
+																<a class="colorlink" v-bind:href="partido.map" target="_blank">{{partido.location}}</a>
+															</td>
+															<td class="link mostrar-landscape">
+																<iframe :src="partido.iframe"></iframe>
+																<a class="colorlink">{{partido.location}}</a>
+															</td>
+														</tr>					
+													</tbody>  
+												</table>
+											</div>
+										</div>
+									</div>
+									<div class="card color_accordion">
+										<div class="card-header">
+											<a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
+												<h5>December</h5>
+											</a>
+										</div>
+										<div id="collapseFour" class="collapse" data-parent="#accordion">
+											<div class="card-body color_accordion" id="tabla-partidos">
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Match</th>
+															<th>Teams</th>
+															<th>Location</th>
+														</tr>
+													</thead>
+													<tbody>  
+														<tr v-for="partido in pDecember">
+															<td>{{partido.day}}/{{partido.monthN}} {{partido.time}}</td>
+															<td>{{partido.team1}} vs {{partido.team2}}</td>
+															<td class="link mostrar-portrait">
+																<a class="colorlink" v-bind:href="partido.map" target="_blank">{{partido.location}}</a>
+															</td>
+															<td class="link mostrar-landscape">
+																<iframe :src="partido.iframe"></iframe>
+																<a class="colorlink">{{partido.location}}</a>
+															</td>
+														</tr>					
+													</tbody>  
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div v-show="seccion == 'TI'" class="informacion fix_fixed-top">
+					<div class="container-fluid">
+						<div class="row d-flex informacion">
+							<div class="col-xs-3">
+								<a class="navbar-brand title m-3" onclick="cambiarSeccion('U1')">
+									<img class="boxshadow" src="images/U1.png" alt="team u1" style="width:100px"></a>
+								<h5 class="text-center">Equipo 1</h5>
+							</div>
+							<div class="col-xs-3">
+								<a class="navbar-brand title m-3" onclick="cambiarSeccion('U2')">
+									<img class="boxshadow" src="images/U2.png" alt="team u2" style="width:100px">
+								</a>
+								<h5 class="text-center">Equipo 2</h5>
+							</div>
+							<div class="col-xs-3">
+								<a class="navbar-brand title m-3" onclick="cambiarSeccion('U3')">
+									<img class="boxshadow" src="images/U3.png" alt="team u3" style="width:100px">
+								</a>
+								<h5 class="text-center">Equipo 3</h5>
+							</div>
+							<div class="col-xs-3">
+								<a class="navbar-brand title m-3" onclick="cambiarSeccion('U4')">
+									<img class="boxshadow" src="images/U4.png" alt="team u4" style="width:100px">
+								</a>
+								<h5 class="text-center">Equipo 4</h5>
+							</div>
+							<div class="col-xs-3">
+								<a class="navbar-brand title m-3" onclick="cambiarSeccion('U5')">
+									<img class="boxshadow" src="images/U5.png" alt="team u5" style="width:100px">
+								</a>
+								<h5 class="text-center">Equipo 5</h5>
+							</div>
+							<div class="col-xs-3">
+								<a class="navbar-brand title m-3" onclick="cambiarSeccion('U6')">
+									<img class="boxshadow" src="images/U6.png" alt="team u6" style="width:100px">
+								</a>
+								<h5 class="text-center">Equipo 6</h5>
+							</div>
+						</div>
+					</div>
+				</div>  
+				<div v-show="seccion == 'CT'" class="infocontact">
+					<img class="boxshadow justify-align-center" src="images/coachboss.png" alt="coachboss" style="width:180px">
+					<h5>Please email us at <a class="colormail" href="mailto:nysl@chisoccer.org"><br>nysl@chisoccer.org</a></h5>
+					<br><br>
+					<h5>We will reply to your email<br> as soon as we can.</h5>
+				</div> 
+				<div v-show="seccion == 'U1'" class="informacion" id="tabla-partidos">
+					<div class="container-fluid">
+						<div class="row d-flex">
+							<div class="escudo">
+								<a class="navbar-brand title" onclick="cambiarSeccion('TI')">
+									<img class="boxshadow" src="images/U1.png" alt="team u1" style="width:100px"></a>
+								<h5 class="text-center">Equipo 1</h5>
+							</div>
+							<div class="coach">
+								<img class="boxshadow" src="images/coach1.png" alt="coach1" style="width:150px">
+								<a class="colormail" href="mailto:coach1@chisoccer.org"><br>coach1@chisoccer.org</a>
+							</div>
+							<div class="container">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Match</th>
+											<th>Teams</th>
+											<th>Location</th>
+										</tr>
+									</thead>
+									<tbody>  
+										<tr v-for="equipo in tEquipo1">
+											<td>{{equipo.day}}/{{equipo.monthN}} {{equipo.time}}</td>
+											<td>{{equipo.team1}} vs {{equipo.team2}}</td>
+											<td class="link mostrar-portrait">
+												<a class="colorlink" v-bind:href="equipo.map" target="_blank">{{equipo.location}}</a>
+											</td>
+											<td class="link mostrar-landscape">
+												<iframe :src="equipo.iframe"></iframe>
+												<a class="colorlink">{{equipo.location}}</a>
+											</td>
+										</tr>					
+									</tbody>  
+								</table>
+							</div>
+						</div>
+					</div>  
+				</div>
+				<div v-show="seccion == 'U2'" class="informacion" id="tabla-partidos">
+					<div class="container-fluid">
+						<div class="row d-flex">
+							<div class="escudo">
+								<a class="navbar-brand title" onclick="cambiarSeccion('TI')">
+									<img class="boxshadow" src="images/U2.png" alt="team u2" style="width:100px"></a>
+								<h5 class="text-center">Equipo 2</h5>
+							</div>
+							<div class="coach">
+								<img class="boxshadow" src="images/coach2.png" alt="coach2" style="width:150px">
+								<a class="colormail" href="mailto:coach2@chisoccer.org"><br>coach2@chisoccer.org</a>
+							</div>
+							<div class="container">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Match</th>
+											<th>Teams</th>
+											<th>Location</th>
+										</tr>
+									</thead>
+									<tbody>  
+										<tr v-for="equipo in tEquipo2">
+											<td>{{equipo.day}}/{{equipo.monthN}} {{equipo.time}}</td>
+											<td>{{equipo.team1}} vs {{equipo.team2}}</td>
+											<td class="link mostrar-portrait">
+												<a class="colorlink" v-bind:href="equipo.map" target="_blank">{{equipo.location}}</a>
+											</td>
+											<td class="link mostrar-landscape">
+												<iframe :src="equipo.iframe"></iframe>
+												<a class="colorlink">{{equipo.location}}</a>
+											</td>
+										</tr>					
+									</tbody>  
+								</table>
+							</div>
+						</div>
+					</div>  
+				</div>
+				<div v-show="seccion == 'U3'" class="informacion" id="tabla-partidos">
+					<div class="container-fluid">
+						<div class="row d-flex">
+							<div class="escudo">
+								<a class="navbar-brand title" onclick="cambiarSeccion('TI')">
+									<img class="boxshadow" src="images/U3.png" alt="team u3" style="width:100px"></a>
+								<h5 class="text-center">Equipo 3</h5>
+							</div>
+							<div class="coach">
+								<img class="boxshadow" src="images/coach3.png" alt="coach3" style="width:150px">
+								<a class="colormail" href="mailto:coach3@chisoccer.org"><br>coach3@chisoccer.org</a>
+							</div>
+							<div class="container">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Match</th>
+											<th>Teams</th>
+											<th>Location</th>
+										</tr>
+									</thead>
+									<tbody>  
+										<tr v-for="equipo in tEquipo3">
+											<td>{{equipo.day}}/{{equipo.monthN}} {{equipo.time}}</td>
+											<td>{{equipo.team1}} vs {{equipo.team2}}</td>
+											<td class="link mostrar-portrait">
+												<a class="colorlink" v-bind:href="equipo.map" target="_blank">{{equipo.location}}</a>
+											</td>
+											<td class="link mostrar-landscape">
+												<iframe :src="equipo.iframe"></iframe>
+												<a class="colorlink">{{equipo.location}}</a>
+											</td>
+										</tr>					
+									</tbody>  
+								</table>
+							</div>
+						</div>
+					</div>  
+				</div>
+				<div v-show="seccion == 'U4'" class="informacion" id="tabla-partidos">
+					<div class="container-fluid">
+						<div class="row d-flex">
+							<div class="escudo">
+								<a class="navbar-brand title" onclick="cambiarSeccion('TI')">
+									<img class="boxshadow" src="images/U4.png" alt="team u4" style="width:100px"></a>
+								<h5 class="text-center">Equipo 4</h5>
+							</div>
+							<div class="coach">
+								<img class="boxshadow" src="images/coach4.png" alt="coach4" style="width:150px">
+								<a class="colormail" href="mailto:coach4@chisoccer.org"><br>coach4@chisoccer.org</a>
+							</div>
+							<div class="container">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Match</th>
+											<th>Teams</th>
+											<th>Location</th>
+										</tr>
+									</thead>
+									<tbody>  
+										<tr v-for="equipo in tEquipo4">
+											<td>{{equipo.day}}/{{equipo.monthN}} {{equipo.time}}</td>
+											<td>{{equipo.team1}} vs {{equipo.team2}}</td>
+											<td class="link mostrar-portrait">
+												<a class="colorlink" v-bind:href="equipo.map" target="_blank">{{equipo.location}}</a>
+											</td>
+											<td class="link mostrar-landscape">
+												<iframe :src="equipo.iframe"></iframe>
+												<a class="colorlink">{{equipo.location}}</a>
+											</td>
+										</tr>					
+									</tbody>  
+								</table>
+							</div>
+						</div>
+					</div>  
+				</div>
+				<div v-show="seccion == 'U5'" class="informacion" id="tabla-partidos">
+					<div class="container-fluid">
+						<div class="row d-flex">
+							<div class="escudo">
+								<a class="navbar-brand title" onclick="cambiarSeccion('TI')">
+									<img class="boxshadow" src="images/U5.png" alt="team u5" style="width:100px"></a>
+								<h5 class="text-center">Equipo 5</h5>
+							</div>
+							<div class="coach">
+								<img class="boxshadow" src="images/coach5.png" alt="coach5" style="width:150px">
+								<a class="colormail" href="mailto:coach5@chisoccer.org"><br>coach5@chisoccer.org</a>
+							</div>
+							<div class="container">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Match</th>
+											<th>Teams</th>
+											<th>Location</th>
+										</tr>
+									</thead>
+									<tbody>  
+										<tr v-for="equipo in tEquipo5" id="tabla-partidos">
+											<td>{{equipo.day}}/{{equipo.monthN}} {{equipo.time}}</td>
+											<td>{{equipo.team1}} vs {{equipo.team2}}</td>
+											<td class="link mostrar-portrait">
+												<a class="colorlink" v-bind:href="equipo.map" target="_blank">{{equipo.location}}</a>
+											</td>
+											<td class="link mostrar-landscape">
+												<iframe :src="equipo.iframe"></iframe>
+												<a class="colorlink">{{equipo.location}}</a>
+											</td>
+										</tr>					
+									</tbody>  
+								</table>
+							</div>
+						</div>
+					</div>  
+				</div>
+				<div v-show="seccion == 'U6'" class="informacion" id="tabla-partidos">
+					<div class="container-fluid">
+						<div class="row d-flex">
+							<div class="escudo">
+								<a class="navbar-brand title" onclick="cambiarSeccion('TI')">
+									<img class="boxshadow" src="images/U6.png" alt="team u6" style="width:100px"></a>
+								<h5 class="text-center">Equipo 6</h5>
+							</div>
+							<div class="coach">
+								<img class="boxshadow" src="images/coach6.png" alt="coach6" style="width:150px">
+								<a class="colormail" href="mailto:coach6@chisoccer.org"><br>coach6@chisoccer.org</a>
+							</div>
+							<div class="container">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Match</th>
+											<th>Teams</th>
+											<th>Location</th>
+										</tr>
+									</thead>
+									<tbody>  
+										<tr v-for="equipo in tEquipo6">
+											<td>{{equipo.day}}/{{equipo.monthN}} {{equipo.time}}</td>
+											<td>{{equipo.team1}} vs {{equipo.team2}}</td>
+											<td class="link mostrar-portrait">
+												<a class="colorlink" v-bind:href="equipo.map" target="_blank">{{equipo.location}}</a>
+											</td>
+											<td class="link mostrar-landscape">
+												<iframe :src="equipo.iframe"></iframe>
+												<a class="colorlink">{{equipo.location}}</a>
+											</td>
+										</tr>					
+									</tbody>  
+								</table>
+							</div>
+						</div>
+					</div>  
+				</div>
+				<div v-show="seccion == 'LC'" class="info">
+					<h3>LOGIN</h3>
+				</div>  
+			</main>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="js/datos.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>
